@@ -101,7 +101,8 @@ uint64_t amqp_get_monotonic_timestamp(void) {
 }
 #endif /* AMQP_POSIX_TIMER_API */
 
-int amqp_time_from_now(amqp_time_t *time, struct timeval *timeout) {
+AMQP_PUBLIC_FUNCTION
+int AMQP_CALL amqp_time_from_now(amqp_time_t *time, struct timeval *timeout) {
   uint64_t now_ns;
   uint64_t delta_ns;
 
@@ -236,7 +237,8 @@ int amqp_time_tv_until(amqp_time_t time, struct timeval *in,
   return AMQP_STATUS_OK;
 }
 
-int amqp_time_has_past(amqp_time_t time) {
+AMQP_PUBLIC_FUNCTION
+int AMQP_CALL amqp_time_has_past(amqp_time_t time) {
   uint64_t now_ns;
   if (UINT64_MAX == time.time_point_ns) {
     return AMQP_STATUS_OK;

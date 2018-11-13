@@ -23,6 +23,7 @@
 #ifndef AMQP_TIMER_H
 #define AMQP_TIMER_H
 
+#include <amqp.h>
 #include <stdint.h>
 
 #if ((defined(_WIN32)) || (defined(__MINGW32__)) || (defined(__MINGW64__)))
@@ -69,7 +70,8 @@ uint64_t amqp_get_monotonic_timestamp(void);
  * AMQP_STATUS_TIMER_FAILURE if the underlying call to get the current timestamp
  * fails.
  */
-int amqp_time_from_now(amqp_time_t *time, struct timeval *timeout);
+AMQP_PUBLIC_FUNCTION
+int AMQP_CALL amqp_time_from_now(amqp_time_t *time, struct timeval *timeout);
 
 /* Get a amqp_time_t that is seconds from now.
  * If seconds <= 0, then amqp_time_infinite() is created.
@@ -121,7 +123,8 @@ int amqp_time_tv_until(amqp_time_t time, struct timeval *in,
  * Return AMQP_STATUS_TIMER_FAILURE if the underlying call to get the current
  * timestamp fails.
  */
-int amqp_time_has_past(amqp_time_t time);
+AMQP_PUBLIC_FUNCTION
+int AMQP_CALL amqp_time_has_past(amqp_time_t time);
 
 /* Return the time value that happens first */
 amqp_time_t amqp_time_first(amqp_time_t l, amqp_time_t r);
